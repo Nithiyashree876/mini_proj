@@ -19,24 +19,22 @@ def run_headless_test():
     context = ContextEngine()
     notifier = NotificationGenerator()
     
-    # ── Fetch Alice's ID for simulation ───────────────────────
-    alice_pid = None
-    for pid, info in db.get_all_identities().items():
-        if info['name'] == 'Alice':
-            alice_pid = pid
-            break
-            
-    if not alice_pid:
+    # ── Fetch first enrolled identity for simulation ──────────
+    all_identities = db.get_all_identities()
+    if not all_identities:
         print("Demo identities not found. Please run setup_demo.py first.")
         return
 
-    # ── TEST 1: Both modalities match (Alice) ─────────────────
-    print("\n[TEST 1] SIMULATING FACE & VOICE MATCH (ALICE)")
-    face_res = {'name': 'Alice', 'person_id': alice_pid, 'confidence': 0.95}
-    voice_res = {'name': 'Alice', 'person_id': alice_pid, 'confidence': 0.88}
-    
-    print(" ➔ Face says: Alice (95%)")
-    print(" ➔ Voice says: Alice (88%)")
+    first_pid = next(iter(all_identities))
+    first_name = all_identities[first_pid]['name']
+
+    # ── TEST 1: Both modalities match ─────────────────────────
+    print(f"\n[TEST 1] SIMULATING FACE & VOICE MATCH ({first_name.upper()})")
+    face_res = {'name': first_name, 'person_id': first_pid, 'confidence': 0.95}
+    voice_res = {'name': first_name, 'person_id': first_pid, 'confidence': 0.88}
+
+    print(f" ➔ Face says: {first_name} (95%)")
+    print(f" ➔ Voice says: {first_name} (88%)")
     
     fusion_res = fusion.fuse(face_res, voice_res, None)
     ctx = context.update(fusion_res)

@@ -41,7 +41,12 @@ class FaceRecognizer:
         feature = self.recognizer.feature(aligned_face)
         
         # Features come out as 1x128 array -> flatten to 1D
-        embedding = feature.flatten()
+        embedding = feature.flatten().astype(np.float32)
+
+        # L2-normalize so cosine similarity = dot product with range [-1, 1]
+        norm = np.linalg.norm(embedding)
+        if norm > 0:
+            embedding = embedding / norm
         return embedding
 
     def recognize(self, original_frame, yunet_face):

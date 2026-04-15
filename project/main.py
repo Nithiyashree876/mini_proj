@@ -86,7 +86,7 @@ def main():
                 identities = []
                 for det in detections:
                     # Face recognition
-                    face_result = face_recognizer.recognize(det['face_region'])
+                    face_result = face_recognizer.recognize(frame, det['yunet_face'])
 
                     # Eye detection for anti-spoof
                     eyes = face_detector.detect_eyes(det['gray_region'])
@@ -153,7 +153,7 @@ def main():
                     # Re-fuse with audio if we have a recent face
                     if detections:
                         last_face = face_recognizer.recognize(
-                            detections[0]['face_region']
+                            frame, detections[0]['yunet_face']
                         )
                         fusion_result = fusion.fuse(
                             face_result=last_face,
