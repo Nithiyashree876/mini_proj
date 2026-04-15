@@ -1,0 +1,123 @@
+You are an expert AI systems architect and full-stack developer.
+
+I want you to build a complete working project for the following research problem:
+
+Project Title:
+Multimodal Intelligent Identity Recognition and Context-Aware Notification System using Vision, Audio, and Language Models
+
+Objective:
+Design and implement a real-time multimodal identity recognition system that combines:
+1. Face Recognition (Vision)
+2. Speaker Recognition (Audio)
+3. Context-aware reasoning and notification generation (Language Model)
+
+The system must fuse all modalities intelligently and generate human-like notifications.
+
+-----------------------------------
+SYSTEM REQUIREMENTS
+-----------------------------------
+
+1. VISION MODULE (Face Recognition)
+- Use a deep learning model like FaceNet or a pretrained embedding model
+- Detect faces from webcam/video stream
+- Extract embeddings and compare with stored identities
+- Return: identity + confidence score
+
+2. AUDIO MODULE (Speaker Recognition)
+- Capture audio input from microphone
+- Extract speaker embeddings (e.g., using MFCC or pretrained model)
+- Match with known speaker database
+- Return: identity + confidence score
+
+3. MULTIMODAL FUSION
+- Combine face + voice outputs
+- Use confidence-aware fusion (weighted scoring or simple neural fusion)
+- Handle cases:
+    - Only face available
+    - Only voice available
+    - Both available but conflicting
+- Output final identity with confidence
+
+4. CONTEXT-AWARE LANGUAGE MODULE
+- Use a transformer-based model (or simulated LLM logic)
+- Generate intelligent notifications such as:
+    - "Known person detected: John entered the room at 10:32 AM"
+    - "Unknown person detected with low confidence"
+    - "Possible spoof attempt detected"
+- Include temporal context and reasoning
+
+5. NOTIFICATION SYSTEM
+- Display alerts on screen (GUI or console)
+- Optional: log events to file/database
+- Include timestamp, identity, confidence, and message
+
+-----------------------------------
+TECH STACK
+-----------------------------------
+- Python (mandatory)
+- OpenCV (for vision)
+- librosa / pyaudio (for audio)
+- scikit-learn / PyTorch (for embeddings)
+- simple UI (Tkinter or Streamlit)
+- modular architecture
+
+-----------------------------------
+PROJECT STRUCTURE
+-----------------------------------
+Generate full code with proper structure:
+
+/project
+    /vision
+    /audio
+    /fusion
+    /language
+    /utils
+    main.py
+    requirements.txt
+    README.md
+
+-----------------------------------
+IMPLEMENTATION DETAILS
+-----------------------------------
+
+- Use dummy datasets or small simulated identity database
+- Include sample data generation if real dataset not available
+- Provide working code (not pseudo code)
+- Add comments for clarity
+- Include error handling
+- Optimize for real-time execution
+
+-----------------------------------
+ADVANCED FEATURES (IMPORTANT)
+-----------------------------------
+
+- Spoof detection logic (basic simulation is fine)
+- Confidence threshold tuning
+- Temporal tracking (same person over time)
+- Privacy-aware design (do not store raw images/audio, only embeddings)
+- Extensible architecture
+
+-----------------------------------
+OUTPUT EXPECTATIONS
+-----------------------------------
+
+1. Full working code for all modules
+2. Explanation of architecture
+3. Step-by-step setup instructions
+4. How to run the system
+5. Example outputs
+6. Suggestions for improvements
+
+-----------------------------------
+IMPORTANT
+-----------------------------------
+
+Do NOT simplify the system. Build a realistic academic-level prototype.
+
+Break the response into multiple parts if needed:
+Part 1: Architecture
+Part 2: Code
+Part 3: Execution Guide
+Part 4: Enhancements
+
+Start with system architecture diagram (text-based), then proceed to implementation.
